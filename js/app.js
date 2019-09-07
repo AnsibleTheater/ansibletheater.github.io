@@ -1,3 +1,4 @@
+// js-yaml courtesy of https://github.com/nodeca/js-yaml
 var playbookJS = [];
 playbookJS[0] = { name: "test", hosts: "all", become: true, tasks: [] };
 playbookJS[0].tasks[0] = {
