@@ -6,8 +6,8 @@ playbookJS[0].tasks[0] = {
   template: { dest: "/etc/hosts", src: "hosts.j2" }
 };
 playbookJS[0].tasks[1] = {
-  name: "test ping task",
+  name: "{{ variable }}",
   ping: null
 };
 
-console.log(jsyaml.dump(playbookJS));
+$("#yaml-code").text(jsyaml.dump(playbookJS));
