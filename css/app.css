@@ -16,3 +16,7 @@ pre[class*="language-"] {
 .mw-25 {
   max-width: 25% !important;
 }
+
+.tooltip-inner {
+  max-width: 500px;
+}
