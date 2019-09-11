@@ -23,7 +23,6 @@ function moduleSearch() {
     $(function() {
       $('[data-toggle="tooltip"]').tooltip();
     });
-    console.log(result);
   } else {
     $("#module-search-results").append('<a class="dropdown-item">None</a>');
   }
