@@ -677,7 +677,11 @@ function writeFlowMapping(state, level, object) {
   }
 
   state.tag = _tag;
-  state.dump = '{' + _result + '}';
+  if (_result == '') {
+    state.dump = '';
+  } else {
+    state.dump = '{' + _result + '}';
+  }
 }
 
 function writeBlockMapping(state, level, object, compact) {
@@ -751,7 +755,7 @@ function writeBlockMapping(state, level, object, compact) {
   }
 
   state.tag = _tag;
-  state.dump = _result || '{}'; // Empty mapping if no valid pairs.
+  state.dump = _result || ''; // Empty mapping if no valid pairs.
 }
 
 function detectType(state, object, explicit) {
