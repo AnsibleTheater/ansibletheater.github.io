@@ -4,7 +4,7 @@ function addModuleForm(moduleName) {
   console.log(module);
 
   $("#moduleModalTitle").text(moduleName);
-  $("#moduleModalDescription").text(module.short_description);
+  $("#moduleModalDescription").html(module.short_description);
   $("#moduleModalOptions").empty();
 
   Object.keys(module.options).forEach(function(key, index) {

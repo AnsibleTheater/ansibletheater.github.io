@@ -11,7 +11,7 @@ function moduleSearch() {
     });
     result.forEach(element => {
       $("#module-search-results").append(
-        '<a class="dropdown-item" onclick=addModuleForm("' +
+        '<a class="dropdown-item" data-html="true" onclick=addModuleForm("' +
           element.module +
           '") data-toggle="tooltip" title="' +
           element.short_description +
