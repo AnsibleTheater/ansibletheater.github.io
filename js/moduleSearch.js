@@ -1,9 +1,13 @@
 function clearModuleSearch() {
+  $(".tooltip").tooltip("hide");
   $("#module-search").val("");
+  $("#module-search-results").empty();
+  $("#module-search-results").append('<a class="dropdown-item">None</a>');
 }
 
 function moduleSearch() {
   var searchTerm = $("#module-search").val();
+  $(".tooltip").tooltip("hide");
   $("#module-search-results").empty();
   if (searchTerm.length > 2) {
     var result = ansibleData.modules.filter(obj => {

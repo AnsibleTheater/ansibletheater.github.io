@@ -12,3 +12,7 @@ pre[class*="language-"] {
 .dropdown-menu a.dropdown-item {
   cursor: pointer;
 }
+
+.mw-25 {
+  max-width: 25% !important;
+}

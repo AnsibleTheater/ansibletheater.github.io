@@ -1,7 +1,12 @@
+var module;
+var outputTask = {};
 function addModuleForm(moduleName) {
   clearModuleSearch();
-  var module = findModuleByModuleName(moduleName);
+  module = findModuleByModuleName(moduleName);
   console.log(module);
+
+  outputTask = {};
+  outputTask[moduleName] = {};
 
   $("#moduleModalTitle").text(moduleName);
   $("#moduleModalDescription").html(module.short_description);
@@ -9,9 +14,8 @@ function addModuleForm(moduleName) {
 
   Object.keys(module.options).forEach(function(key, index) {
     var opt = module.options[key];
-    console.log("" + opt);
     var newLabel =
-      '<label class="col-sm-2 col-form-label" data-html="true" data-toggle="tooltip" title="' +
+      '<label class="col col-form-label mw-25" data-html="true" data-toggle="tooltip" title="' +
       opt.description.join("<br>") +
       '" for="' +
       key +
@@ -22,10 +26,11 @@ function addModuleForm(moduleName) {
     opt.default = opt.default || "";
     switch (opt.type) {
       default:
-        newElem = '<input type="text" class="form-control" id="' + key + 'Input" placeholder="' + opt.default + '">';
+        newElem =
+          '<input type="text" oninput="updateModuleOption(this.id, this.value)" class="form-control" id="' + key + 'Input" placeholder="' + opt.default + '">';
         break;
     }
-    $("#moduleModalOptions").append('<div class="form-group row">' + newLabel + '<div class="col-sm-10">' + newElem + "</div>" + "</div>");
+    $("#moduleModalOptions").append('<div class="form-group row">' + newLabel + '<div class="col">' + newElem + "</div>" + "</div>");
   });
 
   $(function() {
@@ -34,4 +39,18 @@ function addModuleForm(moduleName) {
   $("#moduleModal").modal("show");
 
   console.log(module);
+}
+
+function updateModuleOption(moduleOptionId, value) {
+  var moduleOption = moduleOptionId.slice(0, -5);
+  outputTask[module.module][moduleOption] = value;
+  if (value == "") {
+    delete outputTask[module.module][moduleOption];
+  }
+}
+
+function addToPlaybook() {
+  playbookJS[0].tasks.push(outputTask);
+  $("#moduleModal").modal("hide");
+  document.dispatchEvent(new Event("generatePlaybook"));
 }
