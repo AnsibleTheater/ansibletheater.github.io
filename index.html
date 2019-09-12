@@ -87,7 +87,12 @@
                 </div>
                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                   <div class="card-body">
-                    <input type="text" oninput="updateModuleTaskDetails(this.id, this.value)" class="form-control" id="nameInput" />
+                    <div class="py-1 row">
+                      <label class="col col-form-label mw-25" data-html="true" data-toggle="tooltip" title="" for="nameInput">name</label>
+                      <div class="col">
+                        <input type="text" oninput="updateModuleTaskDetails(this.id, this.value)" class="form-control" id="nameInput" />
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
