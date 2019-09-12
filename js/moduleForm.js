@@ -55,7 +55,21 @@ function updateModuleTaskDetails(detailId, value) {
 }
 
 function orderOutputTaskElements() {
-  //outputTask[]
+  tempTask = {};
+  if ("name" in outputTask) {
+    tempTask["name"] = outputTask["name"];
+    delete outputTask["name"];
+  }
+  tempTask[module.module] = outputTask[module.module];
+  delete outputTask[module.module];
+
+  var keys = Object.keys(outputTask);
+  keys.sort();
+  for (var i = 0; i < keys.length; i++) {
+    tempTask[keys[i]] = outputTask[keys[i]];
+  }
+
+  outputTask = tempTask;
 }
 
 function addToPlaybook() {
