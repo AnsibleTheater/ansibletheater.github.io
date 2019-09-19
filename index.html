@@ -9,6 +9,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js"></script>
     <script src="js/imports/js-yaml.js"></script>
     <script src="js/imports/prism.js"></script>
 
@@ -37,7 +38,6 @@
         <div class="col vh-100 w-50">
           <!-- Search form -->
           <form class="form-inline">
-            <i class="fas fa-search" aria-hidden="true"></i>
             <div class="dropdown">
               <input
                 class="form-control"
@@ -58,10 +58,7 @@
           </form>
         </div>
         <div class="col d-flex vh-100 w-50">
-          <pre
-            class="line-numbers pre-scrollable w-100"
-            style="white-space:pre-wrap;"
-          ><code class="language-yaml match-braces" data-html="true" id="yaml-code"></code></pre>
+          <pre class="line-numbers pre-scrollable w-100" style="white-space:pre-wrap;"><code class="language-yaml match-braces" id="yaml-code"></code></pre>
         </div>
       </div>
     </div>

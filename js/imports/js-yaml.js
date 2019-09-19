@@ -215,7 +215,7 @@ function State(options) {
   this.flowLevel     = (common.isNothing(options['flowLevel']) ? -1 : options['flowLevel']);
   this.styleMap      = compileStyleMap(this.schema, options['styles'] || null);
   this.sortKeys      = options['sortKeys'] || false;
-  this.lineWidth     = options['lineWidth'] || 80;
+  this.lineWidth     = options['lineWidth'] || 800000;
   this.noRefs        = options['noRefs'] || false;
   this.noCompatMode  = options['noCompatMode'] || false;
   this.condenseFlow  = options['condenseFlow'] || false;
@@ -629,7 +629,7 @@ function writeBlockSequence(state, level, object, compact) {
       if (state.dump && CHAR_LINE_FEED === state.dump.charCodeAt(0)) {
         _result += '-';
       } else {
-        _result += '<a href="javascript:void(0);" style="position: absolute" onclick="editModuleForm(\'' + object[index]["guid"] + '\')"><i class="fa fa-pencil" style="position: relative; left:-1em;"></i></a>' + '- ';
+        _result += 'guid' + object[index]["guid"] + 'guid' + '- ';
       }
 
       _result += state.dump;
