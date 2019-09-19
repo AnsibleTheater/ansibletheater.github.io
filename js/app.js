@@ -1,9 +1,18 @@
 var playbookJS = [];
-playbookJS[0] = { name: "test", hosts: "all", become: true, tasks: [] };
+playbookJS[0] = { name: "test", hosts: "all", become: true, tasks: [], guid: "6e8fd544-45fc-44ab-90dc-ef85b87e982b" };
 playbookJS[0].tasks[0] = {
   name: "test template task",
-  template: { dest: "/etc/hosts", src: "hosts.j2" }
+  template: { dest: "/etc/hosts", src: "hosts.j2" },
+  guid: "8d1d64ab-16cc-446d-9608-8f1ab3403795"
 };
+
+function uuidv4() {
+  return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function(c) {
+    var r = (Math.random() * 16) | 0,
+      v = c == "x" ? r : (r & 0x3) | 0x8;
+    return v.toString(16);
+  });
+}
 
 function main() {
   document.dispatchEvent(new Event("generatePlaybook"));

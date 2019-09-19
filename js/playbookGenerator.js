@@ -1,6 +1,6 @@
 document.addEventListener("generatePlaybook", generatePlaybookEvent, false);
 
 function generatePlaybookEvent(e) {
-  $("#yaml-code").text(jsyaml.dump(playbookJS));
-  Prism.highlightElement(document.getElementById("yaml-code"));
+  $("#yaml-code").html(jsyaml.dump(playbookJS));
+  //Prism.highlightElement(document.getElementById("yaml-code"));
 }

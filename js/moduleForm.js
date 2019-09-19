@@ -5,6 +5,7 @@ function addModuleForm(moduleName) {
   module = findModuleByModuleName(moduleName);
 
   outputTask = {};
+  outputTask["guid"] = uuidv4();
   outputTask[moduleName] = {};
 
   $("#moduleModalTitle").text(moduleName);
@@ -50,12 +51,13 @@ function updateModuleTaskDetails(detailId, value) {
   var detail = detailId.slice(0, -5);
   outputTask[detail] = value;
   if (value == "") {
-    delete outputTask[module.module][moduleOption];
+    delete outputTask[detail];
   }
 }
 
 function orderOutputTaskElements() {
   tempTask = {};
+  guid = "";
   if ("name" in outputTask) {
     tempTask["name"] = outputTask["name"];
     delete outputTask["name"];
@@ -63,11 +65,16 @@ function orderOutputTaskElements() {
   tempTask[module.module] = outputTask[module.module];
   delete outputTask[module.module];
 
+  guid = outputTask["guid"];
+  delete outputTask["guid"];
+
   var keys = Object.keys(outputTask);
   keys.sort();
   for (var i = 0; i < keys.length; i++) {
     tempTask[keys[i]] = outputTask[keys[i]];
   }
+
+  tempTask["guid"] = guid;
 
   outputTask = tempTask;
 }

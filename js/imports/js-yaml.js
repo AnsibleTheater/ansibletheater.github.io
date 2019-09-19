@@ -629,7 +629,7 @@ function writeBlockSequence(state, level, object, compact) {
       if (state.dump && CHAR_LINE_FEED === state.dump.charCodeAt(0)) {
         _result += '-';
       } else {
-        _result += '- ';
+        _result += '<a href="javascript:void(0);" style="position: absolute" onclick="editModuleForm(\'' + object[index]["guid"] + '\')"><i class="fa fa-pencil" style="position: relative; left:-1em;"></i></a>' + '- ';
       }
 
       _result += state.dump;
@@ -799,6 +799,10 @@ function detectType(state, object, explicit) {
 function writeNode(state, level, object, block, compact, iskey) {
   state.tag = null;
   state.dump = object;
+
+  if (object == "guid") {
+    return false;
+  }
 
   if (!detectType(state, object, false)) {
     detectType(state, object, true);

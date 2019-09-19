@@ -13,6 +13,12 @@
     <script src="js/imports/prism.js"></script>
 
     <!-- Stylesheets -->
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/prism.css" />
     <link rel="stylesheet" href="css/app.css" />
@@ -21,6 +27,7 @@
     <script src="data/ansibleData.js"></script>
     <script src="js/playbookGenerator.js"></script>
     <script src="js/moduleForm.js"></script>
+    <script src="js/moduleEditForm.js"></script>
     <script src="js/moduleSearch.js"></script>
     <script src="js/app.js"></script>
   </head>
@@ -51,7 +58,10 @@
           </form>
         </div>
         <div class="col d-flex vh-100 w-50">
-          <pre class="line-numbers pre-scrollable w-100" style="white-space:pre-wrap;"><code class="language-yaml match-braces" id="yaml-code"></code></pre>
+          <pre
+            class="line-numbers pre-scrollable w-100"
+            style="white-space:pre-wrap;"
+          ><code class="language-yaml match-braces" data-html="true" id="yaml-code"></code></pre>
         </div>
       </div>
     </div>
