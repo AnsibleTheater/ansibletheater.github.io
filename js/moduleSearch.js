@@ -13,6 +13,14 @@ function moduleSearch() {
     var result = ansibleData.modules.filter(obj => {
       return obj.module.toLowerCase().includes(searchTerm.toLowerCase());
     });
+    result = result.concat(
+      ansibleData.modules.filter(obj => {
+        if (result.includes(obj)) {
+          return false;
+        }
+        return obj.short_description.toLowerCase().includes(searchTerm.toLowerCase());
+      })
+    );
     result.forEach(element => {
       $("#module-search-results").append(
         '<a class="dropdown-item" data-html="true" onclick=addModuleForm("' +
