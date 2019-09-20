@@ -11,7 +11,7 @@ function moduleSearch() {
   $("#module-search-results").empty();
   if (searchTerm.length > 2) {
     var result = ansibleData.modules.filter(obj => {
-      return obj.module.includes(searchTerm);
+      return obj.module.toLowerCase().includes(searchTerm.toLowerCase());
     });
     result.forEach(element => {
       $("#module-search-results").append(
