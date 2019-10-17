@@ -20,7 +20,10 @@
       integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
     <link rel="stylesheet" href="css/prism.css" />
     <link rel="stylesheet" href="css/app.css" />
 
@@ -51,27 +54,51 @@
                 id="module-search"
                 oninput="moduleSearch()"
               />
-              <div class="dropdown-menu" aria-labelledby="module-search" id="module-search-results">
+              <div
+                class="dropdown-menu"
+                aria-labelledby="module-search"
+                id="module-search-results"
+              >
                 <a class="dropdown-item">None</a>
               </div>
             </div>
           </form>
         </div>
         <div class="col d-flex vh-100 w-50">
-          <pre class="line-numbers pre-scrollable w-100" style="white-space:pre-wrap;"><code class="language-yaml match-braces" id="yaml-code"></code></pre>
+          <pre
+            class="line-numbers pre-scrollable w-100 h-100"
+            style="white-space:pre-wrap;"
+          ><code class="language-yaml match-braces" id="yaml-code"></code></pre>
         </div>
       </div>
     </div>
     <!-- Modal -->
-    <div class="modal fade" id="moduleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div
+      class="modal fade"
+      id="moduleModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalCenterTitle"
+      aria-hidden="true"
+    >
       <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
         <div class="modal-content">
           <div class="modal-header">
             <div style="flex-direction:column;">
               <h5 class="modal-title" id="moduleModalTitle">Module</h5>
-              <p id="moduleModalDescription" style="margin-top: 0.5rem; margin-bottom: 0;">Description</p>
+              <p
+                id="moduleModalDescription"
+                style="margin-top: 0.5rem; margin-bottom: 0;"
+              >
+                Description
+              </p>
             </div>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
+              aria-label="Close"
+            >
               <span aria-hidden="true">&times;</span>
             </button>
           </div>
@@ -92,12 +119,29 @@
                     </button>
                   </h2>
                 </div>
-                <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                <div
+                  id="collapseOne"
+                  class="collapse show"
+                  aria-labelledby="headingOne"
+                  data-parent="#accordionExample"
+                >
                   <div class="card-body">
                     <div class="py-1 row">
-                      <label class="col col-form-label mw-25" data-html="true" data-toggle="tooltip" title="" for="nameInput">name</label>
+                      <label
+                        class="col col-form-label mw-25"
+                        data-html="true"
+                        data-toggle="tooltip"
+                        title=""
+                        for="nameInput"
+                        >name</label
+                      >
                       <div class="col">
-                        <input type="text" oninput="updateModuleTaskDetails(this.id, this.value)" class="form-control" id="nameInput" />
+                        <input
+                          type="text"
+                          oninput="updateModuleTaskDetails(this.id, this.value)"
+                          class="form-control"
+                          id="nameInput"
+                        />
                       </div>
                     </div>
                   </div>
@@ -118,15 +162,32 @@
                     </button>
                   </h2>
                 </div>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                <div
+                  id="collapseTwo"
+                  class="collapse"
+                  aria-labelledby="headingTwo"
+                  data-parent="#accordionExample"
+                >
                   <div class="card-body" id="moduleModalOptions"></div>
                 </div>
               </div>
             </div>
           </div>
           <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary" onclick="addToPlaybook()">Save changes</button>
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              type="button"
+              class="btn btn-primary"
+              onclick="addToPlaybook()"
+            >
+              Save changes
+            </button>
           </div>
         </div>
       </div>
