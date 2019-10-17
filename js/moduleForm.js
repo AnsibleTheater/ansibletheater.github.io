@@ -27,10 +27,21 @@ function addModuleForm(moduleName) {
     switch (opt.type) {
       default:
         newElem =
-          '<input type="text" oninput="updateModuleOption(this.id, this.value)" class="form-control" id="' + key + 'Input" placeholder="' + opt.default + '">';
+          '<input type="text" oninput="updateModuleOption(this.id, this.value)" class="form-control" id="' +
+          key +
+          'Input" placeholder="' +
+          opt.default +
+          '">';
         break;
     }
-    $("#moduleModalOptions").append('<div class="py-1 row">' + newLabel + '<div class="col">' + newElem + "</div>" + "</div>");
+    $("#moduleModalOptions").append(
+      '<div class="py-1 row">' +
+        newLabel +
+        '<div class="col">' +
+        newElem +
+        "</div>" +
+        "</div>"
+    );
   });
 
   $(function() {
@@ -52,6 +63,7 @@ function updateModuleTaskDetails(detailId, value) {
   outputTask[detail] = value;
   if (value == "") {
     delete outputTask[detail];
+    console.log(value);
   }
 }
 
@@ -79,10 +91,66 @@ function orderOutputTaskElements() {
   outputTask = tempTask;
 }
 
+function updateGuid(guid) {
+  outputTask["guid"] = guid;
+}
+
+function updateName(name) {
+  outputTask["name"] = name;
+  $("#nameInput").val(name);
+}
+
 function addToPlaybook() {
   orderOutputTaskElements();
   console.log(outputTask);
-  playbookJS[0].tasks.push(outputTask);
+  if (updateModuleByGuidIfFound(outputTask, outputTask["guid"]) == false) {
+    playbookJS[0].tasks.push(outputTask);
+  }
   $("#moduleModal").modal("hide");
   document.dispatchEvent(new Event("generatePlaybook"));
+}
+
+function updateModuleByGuidIfFound(module, moduleGuid) {
+  return updateModuleByGuidIfFoundRec(module, moduleGuid, playbookJS);
+}
+
+function updateModuleByGuidIfFoundRec(module, moduleGuid, object) {
+  var type = Object.prototype.toString.call(object);
+  if (type === "[object Object]") {
+    var keys = Object.keys(object);
+    var moduleKeys = Object.keys(module);
+    for (var i = 0; i < keys.length; i++) {
+      if (keys[i] == "guid" && object[keys[i]] == moduleGuid) {
+        // Guid found, and will be updated
+        // Clear out base object that will be updated
+        for (var d = 0; d < keys.length; d++) {
+          delete object[keys[d]];
+        }
+
+        // Update all keys in base object
+        for (var k = 0; k < moduleKeys.length; k++) {
+          object[moduleKeys[k]] = module[moduleKeys[k]];
+        }
+        return object;
+      } else {
+        result = updateModuleByGuidIfFoundRec(
+          module,
+          moduleGuid,
+          object[keys[i]]
+        );
+        if (result !== false) {
+          return result;
+        }
+      }
+    }
+  } else if (type === "[object Array]") {
+    for (i = 0; i < object.length; i++) {
+      result = updateModuleByGuidIfFoundRec(module, moduleGuid, object[i]);
+      if (result !== false) {
+        return result;
+      }
+    }
+  }
+
+  return false;
 }

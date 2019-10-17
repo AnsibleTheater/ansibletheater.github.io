@@ -1,6 +1,26 @@
 function editModuleForm(moduleGuid) {
   var module = findModuleByGuid(moduleGuid);
-  console.log("editing module: ", module);
+  var moduleName;
+  if ("name" in module) {
+    moduleName = Object.keys(module)[1];
+  } else {
+    moduleName = Object.keys(module)[0];
+  }
+
+  addModuleForm(moduleName);
+  instantiateModuleFormWithValues(moduleName, module);
+}
+
+function instantiateModuleFormWithValues(moduleName, module) {
+  updateGuid(module["guid"]);
+  if ("name" in module) {
+    updateName(module["name"]);
+  }
+  Object.keys(module[moduleName]).forEach(function(key, index) {
+    console.log(module[moduleName][key]);
+    $("#" + key + "Input").val(module[moduleName][key]);
+    updateModuleOption(key + "Input", module[moduleName][key]);
+  });
 }
 
 function findModuleByGuid(moduleGuid) {
